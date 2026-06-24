@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Productos</title>
+    <link rel="stylesheet" href="style.css">   
+</head>
+<body>
+    
+  <main class="tarjeta">
+
+    <h1>Formulario de Productos</h1>
+
+    <form id="formulario">
+      <label for="codigo">Código</label><br>
+      <input type="text" id="codigo" name="codigo" value="" ><br><br>
+      <label for="nombre">Nombre</label><br>
+      <input type="text" id="nombre" name="nombre" value=""><br><br>
+
+      <label for="bodega">Bodega</label><br>
+      <select id="bodega" name="bodega">
+        <option value=""></option>
+        <option value="bodega1">bodega 1</option>
+        <option value="bodega2">bodega 2</option>
+        <option value="bodega3">bodega 3</option>
+      </select>
+      <br><br>
+
+      <label for="sucursal">Sucursal</label><br>
+      <select id="sucursal" name="sucursal">
+        <option value=""></option>
+        <option value="sucursal1">sucursal 1</option>
+        <option value="sucursal2">sucursal 2</option>
+        <option value="sucursal3">sucursal 3</option>
+      </select>
+      <br><br>
+
+       <label for="moneda">Moneda</label><br>
+      <select id="moneda" name="moneda">
+        <option value=""></option>
+        <option value="clp">Peso Chileno</option>
+        <option value="usd">Dólar</option>
+        <option value="eur">Euro</option>
+      </select>
+      <br><br>
+
+      <label for="precio">Precio</label><br>
+      <input type="text" id="precio" name="precio" value="" >
+      <br><br>
+
+      <label for="material">Material del Producto</label><br>
+      <input type="checkbox" id="plastico" name="plastico" value="plastico">
+      <label> Plástico</label>
+      <input type="checkbox" id="metal" name="metal" value="metal">
+      <label > Metal</label> 
+      <input type="checkbox" id="madera" name="madera" value="madera">
+      <label> Madera</label>
+      <input type="checkbox" id="vidrio" name="vidrio" value="vidrio">
+      <label> Vidrio</label>
+      <input type="checkbox" id="textil" name="textil" value="textil">
+      <label> Textil</label>
+      <br><br>
+  
+      <p><label for="descripcion">Descripción</label></p>
+    <textarea id="descripcion" name="descripcion" rows="5" cols="100"></textarea>
+
+      <br><br>
+      <button type="submit">Guardar Producto</button>
+    </form>
+
+  </main>
+
+</body>
+</html>         
