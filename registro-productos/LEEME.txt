@@ -1,0 +1,93 @@
+=============================================================================
+SISTEMA DE REGISTRO DE PRODUCTOS - MANUAL DE INSTALACIÓN
+=============================================================================
+
+Este proyecto es un sistema web nativo para el registro y validación de productos.
+Utiliza una arquitectura asíncrona mediante AJAX para la comunicación entre el
+frontend y el backend, garantizando una experiencia de usuario fluida y segura.
+
+-----------------------------------------------------------------------------
+1. REQUISITOS DEL ENTORNO (VERSIONES REQUERIDAS)
+-----------------------------------------------------------------------------
+* Servidor Web: Apache (incluido en XAMPP)
+* Backend: PHP 8.2 o superior (Nativos, sin frameworks)
+* Base de Datos: PostgreSQL 18 (Gestionado con pgAdmin 4)
+* Frontend: HTML5, CSS3 (CSS Grid nativo) y JavaScript (ES6 nativo)
+
+-----------------------------------------------------------------------------
+2. ESTRUCTURA DEL PROYECTO
+-----------------------------------------------------------------------------
+Asegúrese de que los archivos estén organizados de la siguiente manera dentro 
+de la carpeta de despliegue:
+
+registro_productos/
+├── db/
+│   └── estructura_inicial.sql
+├── carga_sucursales.js
+├── app.js
+├── conexion.php
+├── index.php
+├── get_sucursales.php
+├── guardar_producto.php
+├── style.css
+└── LEEME.txt
+
+-----------------------------------------------------------------------------
+3. PASOS PARA LA INSTALACIÓN Y CONFIGURACIÓN
+-----------------------------------------------------------------------------
+
+PASO 1: Despliegue de Archivos en el Servidor
+  - Copie la carpeta completa del proyecto ('registro_productos') dentro del 
+    directorio de publicación de XAMPP.
+    Ruta habitual: C:\xampp\htdocs\
+
+PASO 2: Habilitar la Extensión de PostgreSQL en PHP (XAMPP)
+  1. Abra el Panel de Control de XAMPP.
+  2. En la línea de 'Apache', haga clic en el botón 'Config' y seleccione 'PHP (php.ini)'.
+  3. Busque las siguientes líneas (Ctrl + F):
+     ;extension=pdo_pgsql
+     ;extension=pgsql
+  4. Quite el punto y coma (;) al inicio de ambas líneas para activarlas:
+     extension=pdo_pgsql
+     extension=pgsql
+  5. Guarde el archivo 'php.ini'.
+  6. En el Panel de XAMPP, reinicie el módulo Apache (clic en 'Stop' y luego en 'Start').
+
+PASO 3: Creación y Carga de la Base de Datos
+  1. Abra pgAdmin 4 y conéctese a su servidor local de PostgreSQL.
+  2. Abra la herramienta de consultas (Query Tool) en la base de datos predeterminada 'postgres'.
+  3. Copie y ejecute la primera sección del archivo 'db/estructura_inicial.sql' 
+     para crear la base de datos llamada 'productos'.
+  4. Haga clic derecho sobre 'Databases' en el árbol izquierdo, seleccione 'Refresh'
+     y abra la nueva base de datos 'productos'.
+  5. Abra una nueva 'Query Tool' dentro de 'productos' y ejecute el resto del 
+     script 'estructura_inicial.sql'. Esto creará las tablas (bodega, sucursal, 
+     moneda, producto) e insertará los datos maestros de prueba necesarios.
+
+PASO 4: Configuración de Credenciales de Conexión
+  - Abra el archivo 'conexion.php' en su editor de código.
+  - Modifique la constante 'DB_PASSWORD' con la contraseña real de su usuario 
+    'postgres' en pgAdmin 4.
+  - Guarde los cambios.
+
+-----------------------------------------------------------------------------
+4. EJECUCIÓN DEL PROYECTO
+-----------------------------------------------------------------------------
+1. Asegúrese de que tanto el servicio Apache en XAMPP como el servicio de 
+   PostgreSQL estén activos y en ejecución.
+2. Abra su navegador web de preferencia.
+3. Ingrese a la siguiente URL local para visualizar e interactuar con el sistema:
+   http://localhost/registro_productos/index.php
+
+-----------------------------------------------------------------------------
+5. CONSIDERACIONES DE DISEÑO Y SEGURIDAD IMPLEMENTADAS
+-----------------------------------------------------------------------------
+* Arquitectura Asíncrona: La carga de sucursales en cascada y el envío del 
+  formulario se realizan mediante Fetch API (AJAX), evitando recargas innecesarias.
+* Seguridad de Datos: El almacenamiento de múltiples materiales seleccionados se 
+  resuelve mediante un tipo de dato Arreglo nativo de PostgreSQL (VARCHAR[]), 
+  garantizando escalabilidad limpia.
+* Prevención de Inyecciones SQL: Las consultas en el backend hacia la base de 
+  datos están blindadas al 100% mediante sentencias preparadas parametrizadas 
+  (pg_prepare y pg_execute).
+=============================================================================
