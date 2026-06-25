@@ -1,16 +1,140 @@
-/* Reseteo y fondo general de la pantalla */
+/* =============================================================================
+   1. RESETEO Y FONDO GENERAL DE LA PANTALLA
+   ============================================================================= */
 body {
   font-family: Arial, sans-serif;
   font-size: 16px;
+  background-color: #f4f6f9; /* Fondo gris claro sutil de la captura original */
+  margin: 0;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;   /* Centra la tarjeta horizontalmente */
+  align-items: center;       /* Centra la tarjeta verticalmente */
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* =============================================================================
+   2. TARJETA CONTENEDORA PRINCIPAL
+   ============================================================================= */
+.tarjeta {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 850px;           /* Limita el ancho para que no se estire al infinito */
+  padding: 40px;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidad */
+  box-sizing: border-box;
+}
+
+/* Título principal del formulario */
+.tarjeta h1 {
+  text-align: center;
+  font-size: 28px;
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: #000000;
+}
+
+/* =============================================================================
+   3. ESTRUCTURA DEL FORMULARIO EN GRILLA
+   ============================================================================= */
+#formulario {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Crea 2 columnas exactamente iguales */
+  column-gap: 24px;                      /* Espaciado horizontal entre columnas */
+  row-gap: 16px;                         /* Espaciado vertical entre filas */
+}
+
+/* Comportamiento de cada bloque de campo */
+.grupo-formulario {
+  display: flex;
+  flex-direction: column;                /* Alinea el label arriba y el input abajo */
+  align-items: flex-start;
+}
+
+/* Modificador para elementos que deben abarcar las dos columnas (Materiales y Descripción) */
+.grupo-formulario.completo {
+  grid-column: span 2;
+}
+
+/* =============================================================================
+   4. DISEÑO DE CAMPOS (INPUTS, SELECTS, TEXTAREA)
+   ============================================================================= */
+.grupo-formulario input[type="text"],
+.grupo-formulario select,
+.grupo-formulario textarea {
+  width: 100%;
+  box-sizing: border-box;                /* Asegura que el padding no rompa el ancho total */
+  padding: 10px 12px;                    /* Un poco más de padding para mayor comodidad visual */
+  border: 1px solid #767676;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #ffffff;
+  transition: border-color 0.2s;
+}
+
+/* Efecto visual cuando el usuario hace foco en un campo */
+.grupo-formulario input[type="text"]:focus,
+.grupo-formulario select:focus,
+.grupo-formulario textarea:focus {
+  outline: none;
+  border-color: #1aab8a;                 /* Cambia al color verde del botón */
+}
+
+/* Ajustes finos para las etiquetas textuales superiores */
+.grupo-formulario label {
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: #333333;
+}
+
+/* Evita que el textarea se pueda deformar hacia los lados rompiendo la grilla */
+.grupo-formulario textarea {
+  resize: vertical;
+}
+
+/* =============================================================================
+   5. DISTRIBUCIÓN DE CHECKBOXES
+   ============================================================================= */
+.contenedor-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;                             /* Separación horizontal entre cada checkbox */
+  align-items: center;
+  padding-top: 4px;
+}
+
+.contenedor-checkboxes label {
+  margin-bottom: 0;                      /* Elimina el margen inferior para alineación con el cuadro */
+  margin-right: 4px;
+  cursor: pointer;
+}
+
+/* =============================================================================
+   6. BOTÓN DE ENVÍO Y SU CONTENEDOR
+   ============================================================================= */
+.grupo-boton {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;               /* Centra el botón horizontalmente igual que en tu captura */
+  margin-top: 16px;
 }
 
 button {
   background-color: #1aab8a;
   color: white;
-   font-size: 16px;
-  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;                     /* Texto un poco más firme */
+  padding: 12px 35px;                    /* Ajuste de padding para que se vea estilizado */
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
+/* Efecto hover al pasar el mouse por encima */
+button:hover {
+  background-color: #148f73;
+}
